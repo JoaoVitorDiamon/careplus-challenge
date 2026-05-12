@@ -1,0 +1,64 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8faff;
+}
+
+
+.nav-link {
+    font-size: 0.9rem;
+    color: black ;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #007bff;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.image-container {
+    border: 15px solid #bde0fe;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: scale(1.02);
+}
+
+
+.service-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+}
+
+.service-card.active-card {
+    border: 2px solid #007bff !important;
+    background-color: #ffffff;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 123, 255, 0.15) !important;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-purple-subtle {
+    background-color:#f3e5f5;
+}
+
+.text-purple {
+    color: #9c27b0;
+}
+
+.me-2{
+    max-width: 150px;
+}

@@ -1,13 +1,12 @@
 body {
-    background-color: #f0f8ff; /* Azul bem claro do fundo */
+    background-color: #f0f8ff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 .login-container {
-    background: linear-gradient(135deg, #b3d9ff 50%, #ffffff 50%); /* Simula o efeito de fundo dividido */
+    background: linear-gradient(135deg, #b3d9ff 50%, #ffffff 50%); 
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
     }
 .form-control {
     border-radius: 20px;
@@ -28,7 +27,7 @@ body {
     width: 180px;
     margin-top: -60px;  
     margin-left: -50px; 
-    display: block; /* Garante que as margens funcionem corretamente */
+    display: block; 
     height: auto;
     
 }
@@ -36,6 +35,9 @@ body {
     width: 100%; 
     max-width: 180px; 
     height: auto; 
+}
+.logo-careplus{
+    max-width: 150px;
 }
 .display-5{
     margin-left: 15px;
@@ -72,7 +74,7 @@ body {
     font-size: 20px;
 }
 
-/* Seção de Código (Quadradinhos) */
+/* Quadradinhos */
 .code-section {
     margin-top: 20px;
 }
@@ -99,23 +101,21 @@ body {
     border-color: #007bff;
 }
 
-.bt-email{
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* Classe que será aplicada via JS */
+.opcao-contato.active-opcao {
+    border-color: #007bff !important;
+    background-color:#b3d9ff !important; /* Um fundo azul bem clarinho */
+    border-width: 2px !important;
 }
 
-.bt-email:hover {
-    background-color: #b3d9ff; /* cor do Bootstrap primary */
-    transform: scale(1.02);
+.opcao-contato {
+    transition: all 0.2s ease;
+    border: 2px solid #dee2e6; /* Borda padrão cinza */
 }
 
-.bt-sms{
-    cursor: pointer;
-    transition: all 0.3s ease;
+.opcao-contato:hover {
+    background-color: #f8f9fa;
 }
 
-.bt-sms:hover {
-    background-color: #b3d9ff; /* cor do Bootstrap primary */
-    transform: scale(1.02);
-}
+
 
