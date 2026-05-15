@@ -125,7 +125,6 @@ function runVideoTimer() {
       if(!videoCompleted){
         document.getElementById('btnEarn').disabled=false;
         document.getElementById('btnEarn').innerHTML='<i class="bi bi-star-fill"></i> Ganhar +'+currentVideoPts+' pontos!';
-        // pulse the button
         document.getElementById('btnEarn').style.animation='iconPulse 1.5s ease infinite';
       }
     }
@@ -162,7 +161,7 @@ function earnPoints() {
     wb.classList.add('watched');
     currentVideoCard.querySelector('.video-watched-badge').style.display='block';
   }
-  showToast('+'+currentVideoPts+' pontos adicionados à sua conta! 🎉','success');
+  showToast('+'+currentVideoPts+' pontos adicionados à sua conta!','success');
   setTimeout(()=>closeVideoModal(), 1400);
 }
 
@@ -199,7 +198,6 @@ function confirmRedeem(){
   else { userPoints-=prizeModalPts; updatePointsDisplay(); showToast(name+' resgatado com sucesso!','success'); }
 }
 
-// ===== TOAST =====
 function showToast(msg,type){
   const c=document.getElementById('toastContainer');
   const cfg={
@@ -214,4 +212,4 @@ function showToast(msg,type){
   setTimeout(()=>{ t.style.transition='all 0.4s ease'; t.style.opacity='0'; t.style.transform='translateX(40px)'; setTimeout(()=>t.remove(),400); }, 4000);
 }
 
-setTimeout(()=>showToast('Bem-vindo de volta, Jose! 👋','success'), 700);
+setTimeout(()=>showToast('Bem-vindo de volta, Jose!','success'), 700);
