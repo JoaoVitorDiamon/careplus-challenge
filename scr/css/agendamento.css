@@ -1,0 +1,564 @@
+/* ─────────────────────────────────────────
+VARIÁVEIS E BASE
+    ───────────────────────────────────────── */
+:root {
+    --azul: #1565c0;
+    --azul-btn: #2196f3;
+    --azul-claro: #e3f2fd;
+    --cinza-bg: #f8f9fa;
+    --borda: #d0d0d0;
+    --texto: #1a1a1a;
+    --muted: #6b7280;
+    --erro: #d32f2f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #fff;
+    color: var(--texto);
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────
+    NAVBAR 
+    ───────────────────────────────────────── */
+.navbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+}
+
+
+.navbar .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.navbar .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--azul);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.navbar .logo-text {
+    line-height: 1.1;
+}
+
+.navbar .logo-text span:first-child {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.navbar .logo-text span:last-child {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+}
+
+.navbar-nav .nav-link {
+    color: var(--muted);
+    padding: 4px 10px;
+    font-size: 0.9rem;
+    color: black ;
+}
+
+
+.navbar-nav .nav-link:hover {
+    color: var(--azul);
+}
+
+.me-2{
+    max-width: 150px;
+}
+
+.btn-consulta {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 5px;
+    background: var(--azul);
+    color: #fff;
+    border: none;
+}
+
+.btn-consulta:hover {
+    background: #0d47a1;
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────
+    LAYOUT PRINCIPAL
+    ───────────────────────────────────────── */
+/* Container pai */
+.page-wrap {
+    display: flex;
+    flex-wrap: nowrap; /* Garante que fiquem lado a lado */
+    min-height: 100%; /* Ocupa a altura total da tela */
+}
+
+/* Coluna da Foto */
+.col-foto {
+    flex: 1; /* Ocupa 1 parte do espaço total */
+    display: block;
+    overflow: hidden;
+}
+
+.col-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Coluna do Formulário */
+.col-4 {
+    flex: 1;/* Ocupa também 1 parte (totalizando 1+1=2, ou seja, 50% cada) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+    background-color: #fff;
+}
+
+#etapa1, #etapa2 {
+    width: 100%;
+    max-width: 100%;
+    margin-top: -120px;
+    /* Limita a largura para manter a elegância */
+}
+
+
+/* coluna do formulário */
+
+
+/* ─────────────────────────────────────────
+    TÍTULO DA SEÇÃO
+    ───────────────────────────────────────── */
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--texto);
+    margin-bottom: 28px;
+}
+
+/* ─────────────────────────────────────────
+    CAMPOS
+    ───────────────────────────────────────── */
+.field-group {
+    margin-bottom: 18px;
+}
+
+.field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 3px;
+    letter-spacing: 0.02em;
+}
+
+.field-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--borda);
+    background: transparent;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field-input:focus {
+    border-color: var(--azul);
+}
+
+.field-input.has-error {
+    border-color: var(--erro);
+}
+
+.field-select {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--borda);
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236B7280'/%3E%3C/svg%3E") no-repeat right 4px center;
+    background-size: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 6px 24px 6px 0;
+    font-size: 13px;
+    color: var(--texto);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field-select:focus {
+    border-color: var(--azul);
+}
+
+.field-select.has-error {
+    border-color: var(--erro);
+}
+
+/* placeholder (option vazia) em cinza */
+.field-select option:first-child {
+    color: var(--muted);
+}
+
+.error-msg {
+    display: none;
+    font-size: 10px;
+    color: var(--erro);
+    margin-top: 3px;
+}
+
+.show-error .error-msg {
+    display: block;
+}
+
+/* ─────────────────────────────────────────
+    CALENDÁRIO 
+    ───────────────────────────────────────── */
+.calendar-wrap {
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 4px;
+    background: #fff;
+}
+
+.cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.cal-header span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.cal-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.cal-nav:hover {
+    color: var(--azul);
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    text-align: center;
+}
+
+.cal-day-name {
+    font-size: 10px;
+    color: var(--muted);
+    padding: 3px 0;
+    font-weight: 500;
+}
+
+.cal-day {
+    font-size: 11px;
+    padding: 5px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--texto);
+    transition: background 0.15s;
+}
+
+.cal-day:hover:not(.disabled):not(.empty) {
+    background: var(--azul-claro);
+}
+
+.cal-day.selected {
+    background: var(--azul-btn);
+    color: #fff;
+    border-radius: 50%;
+}
+
+.cal-day.disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.cal-day.empty {
+    cursor: default;
+}
+
+/* horários */
+.horarios-wrap {
+    margin-top: 10px;
+}
+
+.horario-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.horarios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.horario-btn {
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    color: var(--texto);
+    transition: all 0.15s;
+}
+
+.horario-btn:hover {
+    border-color: var(--azul-btn);
+    color: var(--azul-btn);
+}
+
+.horario-btn.selected {
+    background: var(--azul-btn);
+    color: #fff;
+    border-color: var(--azul-btn);
+}
+
+.data-hora-display {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    min-height: 16px;
+}
+
+.data-hora-display.filled {
+    color: var(--azul);
+    font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+    DROPDOWN DE LOCAL 
+    ───────────────────────────────────────── */
+.local-dropdown {
+    position: relative;
+}
+
+.local-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.local-list.open {
+    display: block;
+}
+
+.local-option {
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--texto);
+    transition: background 0.1s;
+}
+
+.local-option:last-child {
+    border-bottom: none;
+}
+
+.local-option:hover {
+    background: var(--azul-claro);
+}
+
+.local-option.selected {
+    background: var(--azul-claro);
+    color: var(--azul);
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────
+    DROPDOWN DE ESPECIALIDADE
+    ───────────────────────────────────────── */
+.esp-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.esp-list.open {
+    display: block;
+}
+
+.esp-option {
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--texto);
+    transition: background 0.1s;
+}
+
+.esp-option:last-child {
+    border-bottom: none;
+}
+
+.esp-option:hover {
+    background: var(--azul-claro);
+}
+
+.esp-option.selected {
+    background: var(--azul-claro);
+    color: var(--azul);
+    font-weight: 600;
+}
+
+.esp-btn-mais {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--azul-btn);
+    cursor: pointer;
+    text-align: center;
+    border-top: 1px solid var(--borda);
+}
+
+/* ─────────────────────────────────────────
+    BOTÃO AGENDAR
+    ───────────────────────────────────────── */
+.btn-agendar {
+    display: block;
+    width: 140px;
+    margin: 28px auto 0;
+    padding: 10px 0;
+    background: var(--azul-btn);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.btn-agendar:hover {
+    background: var(--azul);
+}
+
+/* ─────────────────────────────────────────
+    CARD DE CONFIRMAÇÃO 
+    ───────────────────────────────────────── */
+.confirmacao-card {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 28px 32px;
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.confirmacao-card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 18px;
+    color: var(--texto);
+}
+
+.conf-linha {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.conf-linha strong {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.conf-agradecimento {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 14px;
+}
+
+.btn-novo-ag {
+    display: block;
+    width: 160px;
+    margin: 20px auto 0;
+    padding: 10px 0;
+    background: var(--azul-btn);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-novo-ag:hover {
+    background: var(--azul);
+}
+
+/* ─────────────────────────────────────────
+    RESPONSIVO
+    ───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .col-foto {
+        display: none;
+    }
+
+    .col-form {
+        padding: 24px 20px;
+    }
+}

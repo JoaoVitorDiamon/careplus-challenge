@@ -36,3 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function irParaAgendamento() {
+    window.location.href = "../pages/agendamento.html";
+}
+
+function irParaGamificacao() {
+    window.location.href = "sua-pagina-de-gamificacao.html";
+}
