@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Plus — Cancelamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/cancelation.css">
+</head>
+
+<body>
+
+    <nav class="navbar-custom">
+        <a class="nav-brand me-4" href="index.html">
+            <div>
+                <img src="../images/logo-navbar.png" alt="">
+
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">A Clínica</a></li>
+            <li><a href="#">Odontologia</a></li>
+            <li><a href="#">Invisalign</a></li>
+            <li><a href="#">Especialidades</a></li>
+            <li><a href="#">Unidades</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+        <div class="dropdown-nav ms-auto">
+            <button class="btn-consulta" id="btnConsultaNav" onclick="toggleDropdown()">
+                <i class="bi bi-calendar2-check"></i> Consulta <i class="bi bi-chevron-down"
+                    style="font-size:.7rem"></i>
+            </button>
+            <div class="dropdown-menu-custom" id="navDropdown">
+                <a class="dropdown-item-c" href="agendamento.html"><i class="bi bi-calendar-plus"></i> Agendamento</a>
+                <a class="dropdown-item-c" href="reagendamento.html"><i class="bi bi-arrow-repeat"></i>
+                    Reagendamento</a>
+                <a class="dropdown-item-c active" href="cancelation.html"><i class="bi bi-x-circle"></i>
+                    Cancelamento</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page active" id="pageForm">
+        <div class="hero-split">
+            <div class="hero-img-side">
+                <img src="../images/medico.jpg" alt="Clínica">
+                <div class="hero-img-overlay"></div>
+                <div class="hero-img-badge">
+                    <h6><i class="bi bi-shield-check me-1" style="color:var(--primary)"></i>Atendimento seguro</h6>
+                    <p>Seus dados são protegidos e utilizados apenas para identificação.</p>
+                </div>
+            </div>
+            <div class="hero-form-side">
+                <div class="form-container">
+                    <div class="form-section-tag"><i class="bi bi-x-circle-fill"></i> Cancelamento</div>
+                    <h1 class="form-title">Cancelar<br><span>Consulta</span></h1>
+                    <p class="form-subtitle">Informe seus dados para localizarmos sua consulta agendada no sistema.</p>
+
+                    <div class="field-group">
+                        <div class="field-label"><i class="bi bi-person-vcard" style="color:var(--primary)"></i> CPF
+                            <span class="required">*</span></div>
+                        <div style="position:relative">
+                            <i class="bi bi-person-badge field-icon"></i>
+                            <input type="text" class="field-input" id="inputCPF" placeholder="000.000.000-00"
+                                maxlength="14" oninput="maskCPF(this)"
+                                onkeydown="if(event.key==='Enter')buscarConsulta()">
+                        </div>
+                        <div class="field-error" id="errCPF" style="display:none"><i
+                                class="bi bi-exclamation-circle"></i> <span></span></div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-label"><i class="bi bi-calendar3" style="color:var(--primary)"></i> Data de
+                            Nascimento <span class="required">*</span></div>
+                        <div style="position:relative">
+                            <i class="bi bi-calendar-event field-icon"></i>
+                            <input type="text" class="field-input" id="inputNasc" placeholder="DD/MM/AAAA"
+                                maxlength="10" oninput="maskDate(this)"
+                                onkeydown="if(event.key==='Enter')buscarConsulta()">
+                        </div>
+                        <div class="field-error" id="errNasc" style="display:none"><i
+                                class="bi bi-exclamation-circle"></i> <span></span></div>
+                    </div>
+
+                    <button class="btn-continuar" id="btnContinuar" onclick="buscarConsulta()">
+                        <span class="btn-text"><i class="bi bi-search me-1"></i> Buscar Consultas</span>
+                        <span class="spinner"><i class="bi bi-arrow-repeat spin"></i> Buscando...</span>
+                    </button>
+
+                    <div class="hint-demo"><strong>Teste:</strong> CPF 567.968.999-00 / Nasc. 05/10/1985</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="pageConsultas">
+        <div class="consultas-page">
+            <div class="page-header">
+                <button class="back-btn" onclick="voltarForm(null)">
+                    <i class="bi bi-arrow-left"></i> Voltar para identificação
+                </button>
+                <div class="page-header-card">
+                    <div class="patient-info">
+                        <div class="patient-avatar"><i class="bi bi-person-fill"></i></div>
+                        <div>
+                            <div class="patient-name" id="patientName">Paciente</div>
+                            <div class="patient-cpf" id="patientCPFLabel"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                        <div class="found-badge"><i class="bi bi-check-circle-fill"></i> <span id="foundCount">0</span>
+                            consulta(s) ativa(s)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="consultas-grid" id="consultasList"></div>
+            <div class="empty-state" id="emptyState" style="display:none">
+                <div class="empty-icon"><i class="bi bi-calendar-x"></i></div>
+                <div class="empty-title">Nenhuma consulta ativa</div>
+                <div class="empty-sub">Todas as suas consultas já foram canceladas ou não há agendamentos futuros.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop-custom" id="modalConfirm" onclick="if(event.target===this)fecharConfirm()">
+        <div class="modal-box confirm">
+            <div class="modal-confirm-header">
+                <div class="modal-confirm-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+                <div class="modal-confirm-title">Cancelar Consulta</div>
+                <div class="modal-confirm-sub">Tem certeza? Esta ação não pode ser desfeita.</div>
+            </div>
+            <div class="modal-confirm-body">
+                <div class="consulta-summary">
+                    <div class="summary-row"><span class="summary-label">Médico</span><span class="summary-value"
+                            id="sumMedico"></span></div>
+                    <div class="summary-row"><span class="summary-label">Especialidade</span><span class="summary-value"
+                            id="sumEsp"></span></div>
+                    <div class="summary-row"><span class="summary-label">Data</span><span class="summary-value"
+                            id="sumData"></span></div>
+                    <div class="summary-row"><span class="summary-label">Horário</span><span class="summary-value"
+                            id="sumHora"></span></div>
+                    <div class="summary-row"><span class="summary-label">Unidade</span><span class="summary-value"
+                            id="sumUnidade"></span></div>
+                </div>
+                <div class="modal-btns">
+                    <button class="btn-confirm-cancel" onclick="confirmarCancelamento()"><i
+                            class="bi bi-x-circle-fill"></i> Sim, cancelar</button>
+                    <button class="btn-keep" onclick="fecharConfirm()"><i class="bi bi-arrow-left"></i> Manter
+                        consulta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop-custom" id="modalSuccess">
+        <div class="modal-box success">
+            <div class="success-anim"><i class="bi bi-check-circle-fill"></i></div>
+            <div class="modal-title-txt">Cancelamento confirmado!</div>
+            <div class="modal-sub-txt">Sua consulta foi cancelada com sucesso. Você receberá uma confirmação por e-mail
+                em breve.</div>
+            <div><button class="success-remarcar" onclick="remarcar()"><i class="bi bi-arrow-repeat"></i> Gostaria de
+                    remarcar?</button></div>
+            <button class="btn-modal-primary" onclick="fecharSuccess()"><i class="bi bi-check2"></i> Fechar</button>
+        </div>
+    </div>
+
+    <div class="modal-backdrop-custom" id="modalNotFound" onclick="if(event.target===this)fecharNotFound()">
+        <div class="modal-box not-found">
+            <div class="notfound-icon"><i class="bi bi-person-x-fill"></i></div>
+            <div class="modal-title-txt">Paciente não encontrado</div>
+            <div class="modal-sub-txt">Não encontramos consultas com os dados informados. Verifique as informações e
+                tente novamente.</div>
+            <div class="notfound-tips">
+                <p><i class="bi bi-info-circle-fill"></i> Confirme que o CPF está correto (sem erros).</p>
+                <p><i class="bi bi-info-circle-fill"></i> Use o formato DD/MM/AAAA para a data.</p>
+                <p><i class="bi bi-info-circle-fill"></i> Se persistir, contate a clínica diretamente.</p>
+            </div>
+            <button class="btn-modal-primary" onclick="fecharNotFound()"><i class="bi bi-arrow-repeat"></i> Tentar
+                novamente</button>
+            <button class="btn-modal-secondary"><i class="bi bi-headset me-1"></i> Falar com suporte</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/cancelation.js"></script>
+</body>
+
+</html>
