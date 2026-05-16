@@ -1,0 +1,121 @@
+body {
+    background-color: #f0f8ff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+.login-container {
+    background: linear-gradient(135deg, #b3d9ff 50%, #ffffff 50%); 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+.form-control {
+    border-radius: 20px;
+    background-color: #f8f9fa;
+        }
+.btn-login {
+    background-color: #e9ecef;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 100%;
+        }
+.bi{
+    font-size: 60px; 
+    color: #333;
+    padding: top;
+}
+.logo-careplus {
+    width: 180px;
+    margin-top: -60px;  
+    margin-left: -50px; 
+    display: block; 
+    height: auto;
+    
+}
+.img-mascote {
+    width: 100%; 
+    max-width: 180px; 
+    height: auto; 
+}
+.logo-careplus{
+    max-width: 150px;
+}
+.display-5{
+    margin-left: 15px;
+    color: #333;
+}
+.text-muted{
+    margin-left: 15px;
+}
+.card{
+    border-radius: 25px;
+}
+.text-center{
+    font-size: 0.8rem;
+}
+
+.btn-login {
+    background-color: #b3d9ff; 
+    color: black;
+    border: 2px solid #b3d9ff;
+    
+    
+}
+.bg{
+    width: 50px;
+    height: 50px;
+}
+
+.email{
+    font-size: 20px; 
+
+}
+
+.sms{
+    font-size: 20px;
+}
+
+/* Quadradinhos */
+.code-section {
+    margin-top: 20px;
+}
+
+.code-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.code-inputs input {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: white;
+    outline: none;
+}
+
+.code-inputs input:focus {
+    border-color: #007bff;
+}
+
+/* Classe que será aplicada via JS */
+.opcao-contato.active-opcao {
+    border-color: #007bff !important;
+    background-color:#b3d9ff !important; /* Um fundo azul bem clarinho */
+    border-width: 2px !important;
+}
+
+.opcao-contato {
+    transition: all 0.2s ease;
+    border: 2px solid #dee2e6; /* Borda padrão cinza */
+}
+
+.opcao-contato:hover {
+    background-color: #f8f9fa;
+}
+
+
+

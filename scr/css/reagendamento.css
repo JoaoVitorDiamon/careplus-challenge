@@ -1,0 +1,533 @@
+:root {
+    --azul: #1565C0;
+    --azul-btn: #2196F3;
+    --azul-claro: #E3F2FD;
+    --borda: #D0D0D0;
+    --texto: #1A1A1A;
+    --muted: #6B7280;
+    --erro: #D32F2F;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: var(--texto);
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────
+NAVBAR
+    ───────────────────────────────────────── */
+.navbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+}
+
+.me-2{
+    max-width: 150px;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--azul);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.logo-text span:first-child {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.logo-text span:last-child {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: .04em;
+}
+
+.navbar-nav .nav-link {
+    color: var(--muted);
+    padding: 4px 10px;
+    font-size: 0.9rem;
+    color: black ;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--azul);
+}
+
+.btn-consulta {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 5px;
+    background: var(--azul);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-consulta:hover {
+    background: #0d47a1;
+}
+
+/* ─────────────────────────────────────────
+4 etapas
+    ──────────────────────────────────────── */
+.steps-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 30px 10px 30px 0px ;
+    background: #fff;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 90px;
+}
+
+.step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--borda);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: all .25s;
+}
+
+.step-circle.ativo {
+    border-color: var(--azul-btn);
+    background: var(--azul-btn);
+    color: #fff;
+}
+
+.step-circle.concluido {
+    border-color: var(--azul-btn);
+    background: var(--azul-claro);
+    color: var(--azul-btn);
+}
+
+.step-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 80px;
+}
+
+.step-label.ativo {
+    color: var(--azul-btn);
+    font-weight: 600;
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: var(--borda);
+    max-width: 60px;
+    margin-bottom: 18px;
+    transition: background .25s;
+}
+
+.step-line.ativo {
+    background: var(--azul-btn);
+}
+
+/* ─────────────────────────────────────────
+LAYOUT PRINCIPAL
+    ───────────────────────────────────────── */
+.page-wrap {
+    min-height: calc(100vh - 105px);
+    display: flex;
+    align-items: stretch;
+}
+
+.col-foto {
+    width: 440px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.col-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+.col-form {
+    flex: 1;
+    padding: 36px 60px 60px 60px;
+    overflow-y: auto;
+}
+
+/* ─────────────────────────────────────────
+TÍTULO
+    ───────────────────────────────────────── */
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--texto);
+    margin-bottom: 28px;
+}
+
+/* ─────────────────────────────────────────
+CAMPOS 
+    ───────────────────────────────────────── */
+.field-group {
+    margin-bottom: 18px;
+}
+
+.field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 3px;
+    letter-spacing: .02em;
+}
+
+.field-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--borda);
+    background: transparent;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--texto);
+    outline: none;
+    transition: border-color .2s;
+}
+
+.field-input:focus {
+    border-color: var(--azul);
+}
+
+.field-input.has-error {
+    border-color: var(--erro);
+}
+
+.field-input[readonly] {
+    cursor: pointer;
+}
+
+.error-msg {
+    display: none;
+    font-size: 10px;
+    color: var(--erro);
+    margin-top: 3px;
+}
+
+.show-error .error-msg {
+    display: block;
+}
+
+/* ─────────────────────────────────────────
+DROPDOWN GENÉRICO
+    ───────────────────────────────────────── */
+.dropdown-wrap {
+    position: relative;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-list.open {
+    display: block;
+}
+
+.dropdown-option {
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--texto);
+    transition: background .1s;
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover {
+    background: var(--azul-claro);
+}
+
+.dropdown-option.selected {
+    background: var(--azul-claro);
+    color: var(--azul);
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────
+CALENDÁRIO INLINE
+    ───────────────────────────────────────── */
+.calendar-wrap {
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 4px;
+    background: #fff;
+}
+
+.cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.cal-header span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.cal-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.cal-nav:hover {
+    color: var(--azul);
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    text-align: center;
+}
+
+.cal-day-name {
+    font-size: 10px;
+    color: var(--muted);
+    padding: 3px 0;
+    font-weight: 500;
+}
+
+.cal-day {
+    font-size: 11px;
+    padding: 5px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--texto);
+    transition: background .15s;
+}
+
+.cal-day:hover:not(.disabled):not(.empty) {
+    background: var(--azul-claro);
+}
+
+.cal-day.selected {
+    background: var(--azul-btn);
+    color: #fff;
+    border-radius: 50%;
+}
+
+.cal-day.disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.cal-day.empty {
+    cursor: default;
+}
+
+.horarios-wrap {
+    margin-top: 10px;
+}
+
+.horario-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.horarios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.horario-btn {
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    color: var(--texto);
+    transition: all .15s;
+}
+
+.horario-btn:hover {
+    border-color: var(--azul-btn);
+    color: var(--azul-btn);
+}
+
+.horario-btn.selected {
+    background: var(--azul-btn);
+    color: #fff;
+    border-color: var(--azul-btn);
+}
+
+.data-hora-display {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    min-height: 16px;
+}
+
+.data-hora-display.filled {
+    color: var(--azul);
+    font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+BOTÃO AGENDAR
+    ───────────────────────────────────────── */
+.btn-agendar {
+    display: block;
+    width: 160px;
+    margin: 28px auto 0;
+    padding: 10px 0;
+    background: var(--azul-btn);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background .2s;
+}
+
+.btn-agendar:hover {
+    background: var(--azul);
+}
+
+/* ─────────────────────────────────────────
+TELA DE CONFIRMAÇÃO 
+    ───────────────────────────────────────── */
+.confirmacao-card {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 28px 32px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.confirmacao-card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 18px;
+    color: var(--texto);
+}
+
+.conf-linha {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.conf-linha strong {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.conf-agradecimento {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 14px;
+}
+
+.btn-novo-ag {
+    display: block;
+    width: 180px;
+    margin: 20px auto 0;
+    padding: 10px 0;
+    background: var(--azul-btn);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-novo-ag:hover {
+    background: var(--azul);
+}
+
+/* ─────────────────────────────────────────
+RESPONSIVO
+    ───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .col-foto {
+        display: none;
+    }
+
+    .col-form {
+        padding: 24px 20px;
+    }
+
+    .step-item {
+        min-width: 60px;
+    }
+}

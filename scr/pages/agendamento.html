@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/agendamento.css">
+
+    <title>Agendamento — Care Plus Clinic</title>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../pages/index.html">
+                <img src="../images/LogoCarePlus.png" alt="Logo" class="me-2">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link " href="../pages/index.html"><i class="bi bi-house-door me-1">
+                    </i>Início</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/agendamento.html"><i class="bi bi-calendar-event me-1">
+                    </i>Agendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-calendar-x me-1"></i>
+                            Cancelamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/reagendamento.html"><i class="bi bi-calendar-range me-1"></i>Reagendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-trophy me-1"></i> Gamificação</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge rounded-pill bg-warning-subtle text-warning border border-warning px-3 py-2">
+                        <i class="bi bi-star-fill me-1"></i> 0 pts
+                    </span>
+                    <a href="#" class="text-primary fs-4"><i class="bi bi-person-circle"></i></a>
+                    <a href="../pages/login.html" class="text-danger fs-4"><i class="bi bi-box-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+
+    <!-- ══════════════════════════════════════
+    CONTEÚDO PRINCIPAL
+══════════════════════════════════════ -->
+    <div class="page-wrap">
+
+        <!-- Foto lateral -->
+        <div class="col-foto">
+            <img src="../images/dentista.jpg" alt="Profissional de saúde" />
+        </div>
+
+        <!-- Formulário -->
+        <div class="col-4">
+
+            <!-- ── ETAPA 1: Formulário ── -->
+            <div id="etapa1">
+                <h2 class="section-title">Agendamento</h2>
+
+                <!-- Nome completo -->
+                <div class="field-group" id="wrap-nome">
+                    <label class="field-label">Nome completo:</label>
+                    <input class="field-input" id="inp-nome" type="text" placeholder="Nome" />
+                    <div class="error-msg">Informe seu nome completo.</div>
+                </div>
+
+                <!-- E-mail -->
+                <div class="field-group" id="wrap-email">
+                    <label class="field-label">E-mail:</label>
+                    <input class="field-input" id="inp-email" type="email" placeholder="xxx@gmail.com" />
+                    <div class="error-msg">Informe um e-mail válido.</div>
+                </div>
+
+                <!-- Telefone -->
+                <div class="field-group" id="wrap-tel">
+                    <label class="field-label">Telefone:</label>
+                    <input class="field-input" id="inp-tel" type="text" placeholder="(xx) xxxxx-xxxx" maxlength="15"
+                        oninput="mascaraTel(this)" />
+                    <div class="error-msg">Informe o telefone.</div>
+                </div>
+
+                <!-- CPF -->
+                <div class="field-group" id="wrap-cpf">
+                    <label class="field-label">CPF:</label>
+                    <input class="field-input" id="inp-cpf" type="text" placeholder="000.000.000-00" maxlength="14"
+                        oninput="mascaraCPF(this)" />
+                    <div class="error-msg">Informe o CPF.</div>
+                </div>
+
+                <!-- Local (dropdown customizado) -->
+                <div class="field-group" id="wrap-local">
+                    <label class="field-label">Local:</label>
+                    <div class="local-dropdown" id="localDropdown">
+                        <input class="field-input" id="inp-local" type="text" placeholder="SELECIONE A UNIDADE" readonly
+                            style="cursor:pointer" onclick="toggleLocalList()" />
+                        <div class="local-list" id="localList">
+                            <div class="local-option" onclick="selecionarLocal('São Paulo — Unidade Alphaville')">São
+                                Paulo — Unidade Alphaville</div>
+                            <div class="local-option" onclick="selecionarLocal('São Paulo — Unidade Brooklin')">São
+                                Paulo — Unidade Brooklin</div>
+                            <div class="local-option" onclick="selecionarLocal('São Paulo — Unidade Paulista')">São
+                                Paulo — Unidade Paulista</div>
+                            <div class="local-option" onclick="selecionarLocal('São Paulo — Unidade Vila Olímpia')">São
+                                Paulo — Unidade Vila Olímpia</div>
+                            <div class="local-option" onclick="selecionarLocal('São Paulo — Unidade Campo Belo')">São
+                                Paulo — Unidade Campo Belo</div>
+                            <div class="local-option" onclick="selecionarLocal('Rio de Janeiro — Unidade Rio Sul')">Rio
+                                de Janeiro — Unidade Rio Sul</div>
+                            <div class="local-option" onclick="selecionarLocal('Barueri — Unidade Alphaville')">Barueri
+                                — Unidade Alphaville</div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma unidade.</div>
+                </div>
+
+                <!-- Especialidade (dropdown customizado) -->
+                <div class="field-group" id="wrap-esp">
+                    <label class="field-label">Especialidade:</label>
+                    <div class="local-dropdown" id="espDropdown">
+                        <input class="field-input" id="inp-esp" type="text" placeholder="SELECIONE A ESPECIALIDADE"
+                            readonly style="cursor:pointer" onclick="toggleEspList()" />
+                        <div class="esp-list" id="espList">
+                            <div class="esp-option" onclick="selecionarEsp('Medicina')">Medicina</div>
+                            <div class="esp-option" onclick="selecionarEsp('Cosmetria')">Cosmetria</div>
+                            <div class="esp-option" onclick="selecionarEsp('Dermatologia')">Dermatologia</div>
+                            <div class="esp-option" onclick="selecionarEsp('Endocrinologia')">Endocrinologia</div>
+                            <div class="esp-option" onclick="selecionarEsp('Odontologia')">Odontologia</div>
+                            <div class="esp-option" onclick="selecionarEsp('Ortodontia')">Ortodontia</div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma especialidade.</div>
+                </div>
+
+                <!-- Data e Hora (calendário inline) -->
+                <div class="field-group" id="wrap-dataHora">
+                    <label class="field-label">Data e Hora:</label>
+
+                    <!-- Calendário -->
+                    <div class="calendar-wrap">
+                        <div class="cal-header">
+                            <button class="cal-nav" onclick="mudarMes(-1)">&#8249;</button>
+                            <span id="calTitulo"></span>
+                            <button class="cal-nav" onclick="mudarMes(1)">&#8250;</button>
+                        </div>
+                        <div class="cal-grid" id="calGrid"></div>
+                    </div>
+
+                    <!-- Horários aparecem após selecionar dia -->
+                    <div class="horarios-wrap" id="horariosWrap" style="display:none">
+                        <div class="horario-label" id="horarioDiaLabel"></div>
+                        <div class="horarios-grid" id="horariosGrid"></div>
+                    </div>
+
+                    <!-- Resumo selecionado -->
+                    <div class="data-hora-display" id="dataHoraDisplay">SELECIONE DATA E HORA</div>
+                    <div class="error-msg">Selecione data e horário.</div>
+                </div>
+
+                <button class="btn-agendar" onclick="agendar()">Agendar</button>
+            </div><!-- /etapa1 -->
+
+
+            <!-- ── ETAPA 2: Confirmação ── -->
+            <div id="etapa2" style="display:none">
+                <h2 class="section-title">Agendamento</h2>
+                <div class="confirmacao-card">
+                    <h4>Agendamento Realizado!</h4>
+
+                    <div class="conf-linha">Sr(a) <strong id="conf-nome"></strong></div>
+                    <div class="conf-linha">E-mail: <strong id="conf-email"></strong></div>
+                    <div class="conf-linha">Telefone: <strong id="conf-tel"></strong></div>
+                    <div class="conf-linha">CPF: <strong id="conf-cpf"></strong></div>
+                    <div class="conf-linha"><strong id="conf-tipo-consulta">CONSULTA ODONTOLÓGICA</strong></div>
+                    <div class="conf-linha">ESPECIALIDADE (<strong id="conf-esp"></strong>)</div>
+                    <div class="conf-linha">LOCAL: <strong id="conf-local"></strong></div>
+                    <div class="conf-linha">Data: <strong id="conf-data"></strong></div>
+                    <div class="conf-linha">Horario: <strong id="conf-hora"></strong></div>
+                    <div class="conf-linha">Protocolo agendamento: <strong id="conf-protocolo"></strong></div>
+
+                    <p class="conf-agradecimento">Obrigado pela preferência!</p>
+
+                    <button class="btn-novo-ag" onclick="novoAgendamento()">Novo agendamento</button>
+                </div>
+            </div><!-- /etapa2 -->
+
+        </div><!-- /col-form -->
+    </div><!-- /page-wrap -->
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/agendamento.js"></script>
+
+</body>
+
+</html>

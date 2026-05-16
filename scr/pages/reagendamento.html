@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/reagendamento.css">
+
+    <title>Reagendamento — Care Plus Clinic</title>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../pages/index.html">
+                <img src="../images/LogoCarePlus.png" alt="Logo" class="me-2">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link " href="../pages/index.html"><i class="bi bi-house-door me-1"></i> Início</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/agendamento.html"><i class="bi bi-calendar-event me-1"></i>Agendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-calendar-x me-1"></i>Cancelamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/reagendamento.html"><i class="bi bi-calendar-range me-1"></i>Reagendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-trophy me-1"></i> Gamificação</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge rounded-pill bg-warning-subtle text-warning border border-warning px-3 py-2">
+                        <i class="bi bi-star-fill me-1"></i> 0 pts
+                    </span>
+                    <a href="#" class="text-primary fs-4"><i class="bi bi-person-circle"></i></a>
+                    <a href="../pages/login.html" class="text-danger fs-4"><i class="bi bi-box-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+BARRA DE PROGRESSO
+══════════════════════════════════════ -->
+    <div class="steps-bar" id="stepsBar">
+        <div class="step-item">
+            <div class="step-circle" id="sc1">1</div>
+            <div class="step-label" id="sl1">Dados<br>pessoais</div>
+        </div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-item">
+            <div class="step-circle" id="sc2">2</div>
+            <div class="step-label" id="sl2">Especialidade<br>e local</div>
+        </div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-item">
+            <div class="step-circle" id="sc3">3</div>
+            <div class="step-label" id="sl3">Data<br>e hora</div>
+        </div>
+        <div class="step-line" id="line3"></div>
+        <div class="step-item">
+            <div class="step-circle" id="sc4">4</div>
+            <div class="step-label" id="sl4">Confirmação</div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+CONTEÚDO PRINCIPAL
+══════════════════════════════════════ -->
+    <div class="page-wrap">
+
+        <!-- Foto lateral -->
+        <div class="col-foto">
+            <img src="../images/dentista.jpg" alt="Profissional de saúde" />
+        </div>
+
+        <!-- Formulário -->
+        <div class="col-form">
+
+            <!-- ══════════════════════════════
+    Dados pessoais
+    ══════════════════════════════ -->
+            <div id="etapa1">
+                <h2 class="section-title">Reagendamento</h2>
+
+                <div class="field-group" id="wrap-nome">
+                    <label class="field-label">Nome completo:</label>
+                    <input class="field-input" id="inp-nome" type="text" placeholder="Nome" />
+                    <div class="error-msg">Informe seu nome completo.</div>
+                </div>
+
+                <div class="field-group" id="wrap-email">
+                    <label class="field-label">E-mail:</label>
+                    <input class="field-input" id="inp-email" type="email" placeholder="xxx@gmail.com" />
+                    <div class="error-msg">Informe um e-mail válido.</div>
+                </div>
+
+                <div class="field-group" id="wrap-cpf">
+                    <label class="field-label">CPF:</label>
+                    <input class="field-input" id="inp-cpf" type="text" placeholder="000.000.000-00" maxlength="14"
+                        oninput="mascaraCPF(this)" />
+                    <div class="error-msg">Informe o CPF.</div>
+                </div>
+
+                <div class="field-group" id="wrap-local1">
+                    <label class="field-label">Local:</label>
+                    <div class="dropdown-wrap" id="localDrop1">
+                        <input class="field-input" id="inp-local" type="text" placeholder="SELECIONE A UNIDADE" readonly
+                            onclick="toggleDrop('localList1','localDrop1')" />
+                        <div class="dropdown-list" id="localList1">
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','São Paulo — Unidade Alphaville','wrap-local1')">
+                                São Paulo — Unidade Alphaville</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','São Paulo — Unidade Brooklin','wrap-local1')">
+                                São Paulo — Unidade Brooklin</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','São Paulo — Unidade Paulista','wrap-local1')">
+                                São Paulo — Unidade Paulista</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','São Paulo — Unidade Vila Olímpia','wrap-local1')">
+                                São Paulo — Unidade Vila Olímpia</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','São Paulo — Unidade Campo Belo','wrap-local1')">
+                                São Paulo — Unidade Campo Belo</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','Rio de Janeiro — Unidade Rio Sul','wrap-local1')">
+                                Rio de Janeiro — Unidade Rio Sul</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local','localList1','Barueri — Unidade Alphaville','wrap-local1')">
+                                Barueri — Unidade Alphaville</div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma unidade.</div>
+                </div>
+
+                <div style="margin-top:8px;">
+                    <!-- Calendário já na etapa 1 igual ao design -->
+                    <div class="calendar-wrap">
+                        <div class="cal-header">
+                            <button class="cal-nav" onclick="mudarMes(-1)">&#8249;</button>
+                            <span id="calTitulo"></span>
+                            <button class="cal-nav" onclick="mudarMes(1)">&#8250;</button>
+                        </div>
+                        <div class="cal-grid" id="calGrid"></div>
+                    </div>
+                    <div class="field-label mt-2" style="padding:6px 0;border-bottom:1px solid var(--borda)">SELECIONE A
+                        DATA </div>
+                </div>
+
+                <button class="btn-agendar" onclick="irEtapa2()">Agendar</button>
+            </div>
+
+
+            <!-- ══════════════════════════════
+        ETAPA 2 — Especialidade
+    ══════════════════════════════ -->
+            <div id="etapa2" style="display:none">
+                <h2 class="section-title">Agendamento</h2>
+
+                <!-- mostra resumo dos dados já inseridos (readonly) -->
+                <div class="field-group">
+                    <label class="field-label">Nome completo:</label>
+                    <input class="field-input" id="r-nome" type="text" readonly />
+                </div>
+                <div class="field-group">
+                    <label class="field-label">E-mail:</label>
+                    <input class="field-input" id="r-email" type="text" readonly />
+                </div>
+                <div class="field-group">
+                    <label class="field-label">CPF:</label>
+                    <input class="field-input" id="r-cpf" type="text" readonly />
+                </div>
+
+                <div class="field-group" id="wrap-esp">
+                    <label class="field-label">Especialidade:</label>
+                    <div class="dropdown-wrap" id="espDrop">
+                        <input class="field-input" id="inp-esp" type="text" placeholder="SELECIONE A ESPECIALIDADE"
+                            readonly onclick="toggleDrop('espList','espDrop')" />
+                        <div class="dropdown-list" id="espList">
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Medicina','wrap-esp')">Medicina</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Cosmetria','wrap-esp')">Cosmetria</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Dermatologia','wrap-esp')">Dermatologia
+                            </div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Endocrinologia','wrap-esp')">Endocrinologia
+                            </div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Odontologia','wrap-esp')">Odontologia</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp','espList','Ortodontia','wrap-esp')">Ortodontia</div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma especialidade.</div>
+                </div>
+
+                <button class="btn-agendar" onclick="irEtapa3()">Agendar</button>
+            </div>
+
+
+            <!-- ══════════════════════════════
+        ETAPA 3 — Data e Hora
+    ══════════════════════════════ -->
+            <div id="etapa3" style="display:none">
+                <h2 class="section-title">Agendamento</h2>
+
+                <div class="field-group">
+                    <label class="field-label">Nome completo:</label>
+                    <input class="field-input" id="r2-nome" type="text" readonly />
+                </div>
+                <div class="field-group">
+                    <label class="field-label">E-mail:</label>
+                    <input class="field-input" id="r2-email" type="text" readonly />
+                </div>
+                <div class="field-group">
+                    <label class="field-label">CPF:</label>
+                    <input class="field-input" id="r2-cpf" type="text" readonly />
+                </div>
+
+                <!-- Horários do dia selecionado -->
+                <div class="field-group" id="wrap-hora">
+                    <label class="field-label">Data e Hora:</label>
+                    <div id="dataResumoBadge"
+                        style="font-size:12px;color:var(--azul);font-weight:600;margin-bottom:8px;"></div>
+                    <div class="horarios-grid" id="horariosGrid3"></div>
+                    <div class="error-msg">Selecione um horário.</div>
+                </div>
+
+                <div class="field-group" id="wrap-local2">
+                    <label class="field-label">Local:</label>
+                    <div class="dropdown-wrap" id="localDrop2">
+                        <input class="field-input" id="inp-local2" type="text" placeholder="SELECIONE A UNIDADE"
+                            readonly onclick="toggleDrop('localList2','localDrop2')" />
+                        <div class="dropdown-list" id="localList2">
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','São Paulo — Unidade Alphaville','wrap-local2')">
+                                São Paulo — Unidade Alphaville</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','São Paulo — Unidade Brooklin','wrap-local2')">
+                                São Paulo — Unidade Brooklin</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','São Paulo — Unidade Paulista','wrap-local2')">
+                                São Paulo — Unidade Paulista</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','São Paulo — Unidade Vila Olímpia','wrap-local2')">
+                                São Paulo — Unidade Vila Olímpia</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','São Paulo — Unidade Campo Belo','wrap-local2')">
+                                São Paulo — Unidade Campo Belo</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','Rio de Janeiro — Unidade Rio Sul','wrap-local2')">
+                                Rio de Janeiro — Unidade Rio Sul</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-local2','localList2','Barueri — Unidade Alphaville','wrap-local2')">
+                                Barueri — Unidade Alphaville</div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma unidade.</div>
+                </div>
+
+                <div class="field-group" id="wrap-esp2">
+                    <label class="field-label">Especialidade:</label>
+                    <div class="dropdown-wrap" id="espDrop2">
+                        <input class="field-input" id="inp-esp2" type="text" placeholder="SELECIONE A ESPECIALIDADE"
+                            readonly onclick="toggleDrop('espList2','espDrop2')" />
+                        <div class="dropdown-list" id="espList2">
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Medicina','wrap-esp2')">Medicina</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Cosmetria','wrap-esp2')">Cosmetria</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Dermatologia','wrap-esp2')">Dermatologia
+                            </div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Endocrinologia','wrap-esp2')">
+                                Endocrinologia</div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Odontologia','wrap-esp2')">Odontologia
+                            </div>
+                            <div class="dropdown-option"
+                                onclick="selecionarDrop('inp-esp2','espList2','Ortodontia','wrap-esp2')">Ortodontia
+                            </div>
+                        </div>
+                    </div>
+                    <div class="error-msg">Selecione uma especialidade.</div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">Data e Hora:</label>
+                    <div class="dropdown-wrap">
+                        <input class="field-input" id="inp-dataHoraFinal" type="text" readonly
+                            placeholder="SELECIONE DATA E HORA" style="color:var(--azul)" />
+                    </div>
+                </div>
+
+                <button class="btn-agendar" onclick="irEtapa4()">Agendar</button>
+            </div>
+
+
+            <!-- ══════════════════════════════
+        ETAPA 4 — Agendamento Realizado
+    ══════════════════════════════ -->
+            <div id="etapa4" style="display:none">
+                <h2 class="section-title">Agendamento</h2>
+                <div class="confirmacao-card">
+                    <h4>Agendamento Realizado!</h4>
+
+                    <div class="conf-linha">Sr(a) <strong id="conf-nome"></strong></div>
+                    <div class="conf-linha">E-mail: <strong id="conf-email"></strong></div>
+                    <div class="conf-linha">Telefone: <strong id="conf-tel">—</strong></div>
+                    <div class="conf-linha"><strong>CONSULTA ODONTOLÓGICA</strong></div>
+                    <div class="conf-linha">ESPECIALIDADE (<strong id="conf-esp"></strong>)</div>
+                    <div class="conf-linha">LOCAL: <strong id="conf-local"></strong></div>
+                    <div class="conf-linha">Data: <strong id="conf-data"></strong></div>
+                    <div class="conf-linha">Horario: <strong id="conf-hora"></strong></div>
+                    <div class="conf-linha">Protocolo agendamento: <strong id="conf-protocolo"></strong></div>
+
+                    <p class="conf-agradecimento">Obrigado pela preferência!</p>
+
+                    <button class="btn-novo-ag" onclick="reiniciar()">Novo agendamento</button>
+                </div>
+            </div>
+
+        </div><!-- /col-form -->
+    </div><!-- /page-wrap -->
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/reagendamento.js"></script>
+
+</body>
+
+</html>
