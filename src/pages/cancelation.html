@@ -14,32 +14,36 @@
 
 <body>
 
-    <nav class="navbar-custom">
-        <a class="nav-brand me-4" href="index.html">
-            <div>
-                <img src="../images/logo-navbar.png" alt="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../pages/index.html">
+                <img src="../images/LogoCarePlus.png" alt="Logo" class="me-2">
+            </a>
 
-            </div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#">A Clínica</a></li>
-            <li><a href="#">Odontologia</a></li>
-            <li><a href="#">Invisalign</a></li>
-            <li><a href="#">Especialidades</a></li>
-            <li><a href="#">Unidades</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-        <div class="dropdown-nav ms-auto">
-            <button class="btn-consulta" id="btnConsultaNav" onclick="toggleDropdown()">
-                <i class="bi bi-calendar2-check"></i> Consulta <i class="bi bi-chevron-down"
-                    style="font-size:.7rem"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="dropdown-menu-custom" id="navDropdown">
-                <a class="dropdown-item-c" href="agendamento.html"><i class="bi bi-calendar-plus"></i> Agendamento</a>
-                <a class="dropdown-item-c" href="reagendamento.html"><i class="bi bi-arrow-repeat"></i>
-                    Reagendamento</a>
-                <a class="dropdown-item-c active" href="cancelation.html"><i class="bi bi-x-circle"></i>
-                    Cancelamento</a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link " href="../pages/index.html"><i class="bi bi-house-door me-1">
+                    </i>Início</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/agendamento.html"><i class="bi bi-calendar-event me-1">
+                    </i>Agendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/cancelation.html"><i class="bi bi-calendar-x me-1"></i>
+                            Cancelamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/reagendamento.html"><i class="bi bi-calendar-range me-1"></i>Reagendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pages/game.html"><i class="bi bi-trophy me-1"></i> Gamificação</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge rounded-pill bg-warning-subtle text-warning border border-warning px-3 py-2">
+                        <i class="bi bi-star-fill me-1"></i> 0 pts
+                    </span>
+                    <a href="#" class="text-primary fs-4"><i class="bi bi-person-circle"></i></a>
+                    <a href="../pages/login.html" class="text-danger fs-4"><i class="bi bi-box-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </nav>
