@@ -42,5 +42,5 @@ function irParaAgendamento() {
 }
 
 function irParaGamificacao() {
-    window.location.href = "sua-pagina-de-gamificacao.html";
+    window.location.href = "../pages/game.html";
 }
