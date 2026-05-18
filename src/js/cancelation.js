@@ -45,7 +45,9 @@ document.addEventListener('click', e => { if (!e.target.closest('.dropdown-nav')
 
 function showPage(id) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0, 0); }
 
-function voltarForm(e) { if (e) e.preventDefault(); document.getElementById('navDropdown').classList.remove('show'); showPage('pageForm'); }
+function voltarForm() { 
+    window.location.href = 'cancelation.html';
+}
 
 function buscarConsulta() {
     const cpf = document.getElementById('inputCPF').value.trim();
