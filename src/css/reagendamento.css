@@ -25,21 +25,28 @@ NAVBAR
 .navbar {
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
-    padding: 10px 0;
+    height: 60px;
+    padding: 0;
 }
 
-.me-2{
-    max-width: 150px;
+.navbar .container {
+    height: 100%;
 }
 
-.logo-wrap {
+.navbar-brand img {
+    height: auto;
+    width: auto;
+}
+
+
+.navbar .logo-wrap {
     display: flex;
     align-items: center;
     gap: 6px;
     text-decoration: none;
 }
 
-.logo-icon {
+.navbar .logo-icon {
     width: 32px;
     height: 32px;
     background: var(--azul);
@@ -51,18 +58,22 @@ NAVBAR
     font-size: 14px;
 }
 
-.logo-text span:first-child {
+.navbar .logo-text {
+    line-height: 1.1;
+}
+
+.navbar .logo-text span:first-child {
     display: block;
     font-size: 11px;
     font-weight: 700;
     color: var(--azul);
 }
 
-.logo-text span:last-child {
+.navbar .logo-text span:last-child {
     display: block;
     font-size: 9px;
     color: var(--muted);
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
 }
 
 .navbar-nav .nav-link {
@@ -72,8 +83,13 @@ NAVBAR
     color: black ;
 }
 
+
 .navbar-nav .nav-link:hover {
     color: var(--azul);
+}
+
+.me-2{
+    max-width: 150px;
 }
 
 .btn-consulta {

@@ -29,7 +29,17 @@ body {
 .navbar {
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
-    padding: 10px 0;
+    height: 60px;
+    padding: 0;
+}
+
+.navbar .container {
+    height: 100%;
+}
+
+.navbar-brand img {
+    height: auto;
+    width: auto;
 }
 
 
